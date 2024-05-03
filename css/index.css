@@ -1,3 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 h1{
     color: red;
+}
+
+.tablero{
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.1vw;
+    width: 24vw;
+    height: 58vh;
+    margin: auto;
+}
+
+.pieza{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 3px 3px;
+}
+
+.pieza img{
+    width: 100px;
+    height: 100px;
 }
