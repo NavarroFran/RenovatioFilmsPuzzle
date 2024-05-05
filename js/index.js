@@ -3,15 +3,24 @@ function cambiarColor(){
 }
 let tablero = document.querySelector(".tablero")
 
-// let matriz = mezclarMatriz();
+//let matriz = mezclarMatriz();
+
 let matriz =[
     ['1', '2', '3'],
     ['4', '5', '6'],
-    ['7', '', '8']
+    ['7', '8', '']
 ];
 
+
 dibujarPuzzle();
-addEventListeners();
+//addEventListeners();
+
+function empezarJuego(){
+    matriz = mezclarMatriz();
+    dibujarPuzzle();
+    addEventListeners();
+    document.getElementById("botonEmpezar").style.display = 'none';
+}
 
 function dibujarPuzzle(){
     tablero.innerHTML = '';
@@ -23,7 +32,7 @@ function dibujarPuzzle(){
                 div.classList.add("pieza")
 
                 var img = document.createElement("img");
-                img.src = "img/p"+ pieza + ".jpeg";
+                img.src = "img/p"+ pieza + ".jpg";
                 
                 div.appendChild(img);
     
@@ -37,25 +46,85 @@ function dibujarPuzzle(){
     })
 }
 
-function addEventListeners(){
-    let piezas = document.querySelectorAll(".pieza");
+// function addEventListeners(){
+//     let piezas = document.querySelectorAll(".pieza");
 
-    piezas.forEach(pieza =>{
-        pieza.addEventListener('click', () =>{
-            let posicionActual = buscarPosicion(pieza.innerHTML[15]);
-            let posicionVacia = buscarPosicion("");
-            let movimiento = siguienteMovimiento(posicionActual, posicionVacia);
+//     piezas.forEach(pieza =>{
+//         pieza.addEventListener('click', () =>{
+//             let posicionActual = buscarPosicion(pieza.innerHTML[15]);
+//             let posicionVacia = buscarPosicion("");
+//             let movimiento = siguienteMovimiento(posicionActual, posicionVacia);
             
-            if(movimiento == true){
-                actualizarMatriz(pieza.innerHTML[15], posicionActual, posicionVacia);
-                dibujarPuzzle();
-                addEventListeners();
-                if(compararMatriz()){
-                    window.location.href = 'fecha.html'
+//             if(movimiento == true){
+//                 actualizarMatriz(pieza.innerHTML[15], posicionActual, posicionVacia);
+//                 dibujarPuzzle();
+//                 addEventListeners();
+//                 if(compararMatriz()){
+//                     window.location.href = 'fecha.html'
+//                 }
+//             }
+//         })
+//     })
+// }
+
+function addEventListeners() {
+    let piezas = document.querySelectorAll(".pieza");
+    let startX, startY;
+
+    piezas.forEach(pieza => {
+        pieza.addEventListener('touchstart', function(event) {
+            startX = event.touches[0].clientX;
+            startY = event.touches[0].clientY;
+        }, false);
+
+        pieza.addEventListener('touchend', function(event) {
+            var endX = event.changedTouches[0].clientX;
+            var endY = event.changedTouches[0].clientY;
+
+            var deltaX = endX - startX;
+            var deltaY = endY - startY;
+
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                // Horizontal swipe
+                if (Math.abs(deltaX) > 50) {
+                    if (deltaX > 0) {
+                        // Right swipe
+                        movePiece(pieza, 'right');
+                    } else {
+                        // Left swipe
+                        movePiece(pieza, 'left');
+                    }
+                }
+            } else {
+                // Vertical swipe
+                if (Math.abs(deltaY) > 50) {
+                    if (deltaY > 0) {
+                        // Down swipe
+                        movePiece(pieza, 'down');
+                    } else {
+                        // Up swipe
+                        movePiece(pieza, 'up');
+                    }
                 }
             }
-        })
-    })
+        }, false);
+    });
+}
+
+// Modify the movePiece function to accept the puzzle piece element and the direction
+function movePiece(pieza, direction) {
+    let posicionActual = buscarPosicion(pieza.innerHTML[15]);
+    let posicionVacia = buscarPosicion("");
+    let movimiento = siguienteMovimiento(posicionActual, posicionVacia);
+
+    if (movimiento == true) {
+        actualizarMatriz(pieza.innerHTML[15], posicionActual, posicionVacia);
+        dibujarPuzzle();
+        addEventListeners();
+        if (compararMatriz()) {
+            window.location.href = 'fecha.html'
+        }
+    }
 }
 
 function buscarPosicion(numeroPieza){

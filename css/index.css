@@ -4,29 +4,45 @@
     box-sizing: border-box;
 }
 
-h1{
-    color: red;
+body{
+    background-color: #38424C;
 }
 
 .tablero{
-    border: 1px solid red;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.1vw;
-    width: 24vw;
-    height: 58vh;
+    grid-template-columns: repeat(3, 1fr);
     margin: auto;
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20vh;
 }
 
 .pieza{
-    width: 100px;
-    height: 100px;
+    width: 100%; 
+    height: auto;
     cursor: pointer;
     border-radius: 4px;
-    box-shadow: 3px 3px;
+    /* box-shadow: 3px 3px; */
 }
 
 .pieza img{
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.contenedorBoton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+}
+#botonEmpezar{
+    border-radius: 20px;
+    font-size: 40px;
+    font-weight: 600;
+    border: none;
+    padding: 8px 28px;
 }
