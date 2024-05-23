@@ -4,6 +4,18 @@ function cambiarColor(){
 let tablero = document.querySelector(".tablero")
 
 //let matriz = mezclarMatriz();
+const popup = document.getElementById('popup');
+const closeBtn = document.getElementById('close-btn');
+
+// Function to show the popup
+function showPopup() {
+  popup.style.display = "block";
+}
+
+// Function to hide the popup
+function hidePopup() {
+  popup.style.display = "none";
+}
 
 let matriz =[
     ['1', '2', '3'],
@@ -46,86 +58,86 @@ function dibujarPuzzle(){
     })
 }
 
-// function addEventListeners(){
-//     let piezas = document.querySelectorAll(".pieza");
-
-//     piezas.forEach(pieza =>{
-//         pieza.addEventListener('click', () =>{
-//             let posicionActual = buscarPosicion(pieza.innerHTML[15]);
-//             let posicionVacia = buscarPosicion("");
-//             let movimiento = siguienteMovimiento(posicionActual, posicionVacia);
-            
-//             if(movimiento == true){
-//                 actualizarMatriz(pieza.innerHTML[15], posicionActual, posicionVacia);
-//                 dibujarPuzzle();
-//                 addEventListeners();
-//                 if(compararMatriz()){
-//                     window.location.href = 'fecha.html'
-//                 }
-//             }
-//         })
-//     })
-// }
-
-function addEventListeners() {
+function addEventListeners(){
     let piezas = document.querySelectorAll(".pieza");
-    let startX, startY;
 
-    piezas.forEach(pieza => {
-        pieza.addEventListener('touchstart', function(event) {
-            startX = event.touches[0].clientX;
-            startY = event.touches[0].clientY;
-        }, false);
-
-        pieza.addEventListener('touchend', function(event) {
-            var endX = event.changedTouches[0].clientX;
-            var endY = event.changedTouches[0].clientY;
-
-            var deltaX = endX - startX;
-            var deltaY = endY - startY;
-
-            if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                // Horizontal swipe
-                if (Math.abs(deltaX) > 50) {
-                    if (deltaX > 0) {
-                        // Right swipe
-                        movePiece(pieza, 'right');
-                    } else {
-                        // Left swipe
-                        movePiece(pieza, 'left');
-                    }
-                }
-            } else {
-                // Vertical swipe
-                if (Math.abs(deltaY) > 50) {
-                    if (deltaY > 0) {
-                        // Down swipe
-                        movePiece(pieza, 'down');
-                    } else {
-                        // Up swipe
-                        movePiece(pieza, 'up');
-                    }
+    piezas.forEach(pieza =>{
+        pieza.addEventListener('click', () =>{
+            let posicionActual = buscarPosicion(pieza.innerHTML[15]);
+            let posicionVacia = buscarPosicion("");
+            let movimiento = siguienteMovimiento(posicionActual, posicionVacia);
+            
+            if(movimiento == true){
+                actualizarMatriz(pieza.innerHTML[15], posicionActual, posicionVacia);
+                dibujarPuzzle();
+                addEventListeners();
+                if(compararMatriz()){
+                    showPopup();
                 }
             }
-        }, false);
-    });
+        })
+    })
 }
+
+// function addEventListeners() {
+//     let piezas = document.querySelectorAll(".pieza");
+//     let startX, startY;
+
+//     piezas.forEach(pieza => {
+//         pieza.addEventListener('touchstart', function(event) {
+//             startX = event.touches[0].clientX;
+//             startY = event.touches[0].clientY;
+//         }, false);
+
+//         pieza.addEventListener('touchend', function(event) {
+//             var endX = event.changedTouches[0].clientX;
+//             var endY = event.changedTouches[0].clientY;
+
+//             var deltaX = endX - startX;
+//             var deltaY = endY - startY;
+
+//             if (Math.abs(deltaX) > Math.abs(deltaY)) {
+//                 // Horizontal swipe
+//                 if (Math.abs(deltaX) > 50) {
+//                     if (deltaX > 0) {
+//                         // Right swipe
+//                         movePiece(pieza, 'right');
+//                     } else {
+//                         // Left swipe
+//                         movePiece(pieza, 'left');
+//                     }
+//                 }
+//             } else {
+//                 // Vertical swipe
+//                 if (Math.abs(deltaY) > 50) {
+//                     if (deltaY > 0) {
+//                         // Down swipe
+//                         movePiece(pieza, 'down');
+//                     } else {
+//                         // Up swipe
+//                         movePiece(pieza, 'up');
+//                     }
+//                 }
+//             }
+//         }, false);
+//     });
+// }
 
 // Modify the movePiece function to accept the puzzle piece element and the direction
-function movePiece(pieza, direction) {
-    let posicionActual = buscarPosicion(pieza.innerHTML[15]);
-    let posicionVacia = buscarPosicion("");
-    let movimiento = siguienteMovimiento(posicionActual, posicionVacia);
+// function movePiece(pieza, direction) {
+//     let posicionActual = buscarPosicion(pieza.innerHTML[15]);
+//     let posicionVacia = buscarPosicion("");
+//     let movimiento = siguienteMovimiento(posicionActual, posicionVacia);
 
-    if (movimiento == true) {
-        actualizarMatriz(pieza.innerHTML[15], posicionActual, posicionVacia);
-        dibujarPuzzle();
-        addEventListeners();
-        if (compararMatriz()) {
-            window.location.href = 'fecha.html'
-        }
-    }
-}
+//     if (movimiento == true) {
+//         actualizarMatriz(pieza.innerHTML[15], posicionActual, posicionVacia);
+//         dibujarPuzzle();
+//         addEventListeners();
+//         if (compararMatriz()) {
+//             window.location.href = 'fecha.html'
+//         }
+//     }
+// }
 
 function buscarPosicion(numeroPieza){
     let posicionX;
@@ -214,4 +226,8 @@ function compararMatriz(){
     }
 
     return ganaste
+}
+
+function goToFecha(){
+    window.location.href = 'fecha.html'
 }
