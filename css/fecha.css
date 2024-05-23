@@ -20,7 +20,9 @@ container{
     height: 30vh;
     width: 100%;
     background-image: url(../img/fechaEstreno.png);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #38424C;
 }
 
 #divContador{

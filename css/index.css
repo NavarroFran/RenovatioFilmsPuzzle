@@ -85,7 +85,9 @@ body{
     border-radius: 5px;
     display: none; 
     background-image: url(../img/popUpSinBotones.png);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #38424C;
 }
 /*   
   #close-btn {
