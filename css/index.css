@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Tahoma", sans-serif; /* Windows 98 font */
 }
 
 body{
@@ -32,20 +33,13 @@ body{
     display: block;
 }
 
-
 .contenedorBoton{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 5vh;
 }
-/* #botonEmpezar{
-    border-radius: 20px;
-    font-size: 40px;
-    font-weight: 600;
-    border: none;
-    padding: 8px 28px;
-} */
+
 .botonesWindows{
     font-family: "Tahoma", sans-serif; /* Windows 98 font */
     font-size: 14px;
@@ -71,8 +65,6 @@ body{
     box-shadow: inset 1px 1px 0px #808080;
 }
 
-
-
 #popup {
     position: fixed;
     top: 50%;
@@ -80,15 +72,11 @@ body{
     transform: translate(-50%, -50%);
     background-color: white;
     width: 100%;
-    height: 195px;
     border: 1px solid #ccc;
     border-radius: 5px;
     display: none; 
-    background-image: url(../img/popUpSinBotones.png);
-    background-size: contain;
-    background-repeat: no-repeat;
     z-index: 2;
-    /* background-color: #38424C; */
+    background-color: #C1C1C2;;
 }
 
 #dark-overlay {
@@ -101,17 +89,48 @@ body{
     display: none; /* Hide initially */
     z-index: 1;
   }
-/*   
-  #close-btn {
-    padding: 5px 10px;
-    background-color: #ccc;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  } */
 .contenedorPopUp{
     display: flex;
-    justify-content: space-around;
-    align-self: baseline;
-    padding-top: 140px;
+    flex-direction: column;
+    background-color: #C1C1C2;
+
 }
+
+.filaError{
+    background-color: #0E10CA;
+    color: white;
+    padding: 1vh 2vw;
+}
+
+.filaMensaje{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 2vh;
+}
+
+.column {
+    flex: 0 0 auto; 
+    padding: 10px; 
+    box-sizing: border-box; 
+}
+  
+  .col-3 {
+    flex: 0 0 25%; 
+  }
+  
+  .col-9 {
+    flex: 0 0 75%;
+  }
+
+  #IconoX{
+    object-fit: contain;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .filaBotones{
+    display: flex;
+    justify-content: space-around;
+    padding: 2vh 0vh;
+  }

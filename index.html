@@ -13,11 +13,23 @@
     <div class="contenedorBoton">
         <button onclick="empezarJuego()" id="botonEmpezar" class="botonesWindows">Empezar</button>
     </div>
-
     <div id="popup">
         <div class="contenedorPopUp">
-            <button onclick="hidePopup()" class="botonesWindows">Salir</button>
-            <button onclick="goToFecha()" class="botonesWindows">Continuar</button>
+            <div class="filaError">
+                <h2>Error</h2>
+            </div>
+            <div class="filaMensaje">
+                <div class="column col-3">
+                    <img id="IconoX"src="img/IconoX.png">
+                </div>
+                <div class="column col-9">
+                    <h3> Estás a punto de acceder a información confidencial, ¿Deseas continuar?</h3>
+                </div>
+            </div>
+            <div class="filaBotones">
+                <button onclick="hidePopup()" class="botonesWindows botonesPopUp">Salir</button>
+                <button onclick="goToFecha()" class="botonesWindows botonesPopUp">Continuar</button>    
+            </div>
         </div>
     </div>
     <div id="dark-overlay"></div>

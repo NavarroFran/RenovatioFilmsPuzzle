@@ -19,12 +19,26 @@ container{
     align-items: center;
     height: 195px;
     width: 100%;
-    background-image: url(../img/fechaEstreno.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: #38424C;
 }
 
-#divContador{
-    padding-top: 100px;
+.contenedorMensaje{
+    display: flex;
+    flex-direction: column;
+    background-color: #C1C1C2;
+}
+
+.filaError{
+    background-color: #0E10CA;
+    color: white;
+    padding: 1vh 2vw;
+}
+
+.filaMensaje{
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    gap: 2vh;
 }
