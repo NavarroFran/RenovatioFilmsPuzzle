@@ -6,15 +6,18 @@ let tablero = document.querySelector(".tablero")
 //let matriz = mezclarMatriz();
 const popup = document.getElementById('popup');
 const closeBtn = document.getElementById('close-btn');
+const darkOverlay = document.getElementById('dark-overlay');
 
 // Function to show the popup
 function showPopup() {
   popup.style.display = "block";
+  darkOverlay.style.display = "block";
 }
 
 // Function to hide the popup
 function hidePopup() {
   popup.style.display = "none";
+  darkOverlay.style.display = "none";
 }
 
 let matriz =[
@@ -26,7 +29,7 @@ let matriz =[
 
 dibujarPuzzle();
 //addEventListeners();
-
+showPopup();
 function empezarJuego(){
     matriz = mezclarMatriz();
     dibujarPuzzle();

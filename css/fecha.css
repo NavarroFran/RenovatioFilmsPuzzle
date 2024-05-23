@@ -17,7 +17,7 @@ container{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30vh;
+    height: 195px;
     width: 100%;
     background-image: url(../img/fechaEstreno.png);
     background-size: contain;
@@ -26,5 +26,5 @@ container{
 }
 
 #divContador{
-    padding-top: 15vh;
+    padding-top: 100px;
 }
